@@ -1,0 +1,1 @@
+# ahoj_kajo_jak_se_mas
