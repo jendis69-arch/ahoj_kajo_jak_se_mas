@@ -17,46 +17,13 @@
       text-align: center;
       overflow: hidden;
     }
-    .screen {
-      max-width: 90vw;
-      max-height: 90vh;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+    .screen { max-width: 90vw; max-height: 90vh; padding: 40px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; opacity: 0; transition: opacity 0.5s ease; }
     .screen.active { opacity: 1; }
     h1 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 20px; }
     p { font-size: clamp(1.2rem, 5vw, 1.8rem); line-height: 1.4; max-width: 600px; }
-    img {
-      max-width: 80%;
-      max-height: 40vh;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      object-fit: cover;
-    }
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    button {
-      padding: 15px 30px;
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      backdrop-filter: blur(10px);
-    }
+    img { max-width: 80%; max-height: 40vh; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); object-fit: cover; }
+    .buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    button { padding: 15px 30px; font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: bold; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; background: rgba(255,255,255,0.2); color: white; backdrop-filter: blur(10px); }
     button:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
     .yes { background: #ff4757 !important; }
     .no { background: #ffa502 !important; }
@@ -68,20 +35,11 @@
   <div id="app"></div>
   <script>
     const app = document.getElementById('app');
-    let currentScreen = 0; // 0=welcome, 1-9=game pages, 10=outro
+    let currentScreen = 0;
 
     const photos = [
-      'IMG_1333.JPG',  // Welcome
-      'IMG_1352.JPG',  // Page 1
-      'IMG_1384.JPG',  // Page 2
-      'IMG_4447.JPG',  // Page 3
-      'IMG_4496.JPG',  // Page 4
-      'IMG_5870.JPG',  // Page 5
-      'IMG_7952.jpeg',  // Page 6
-      'IMG_7992.jpeg',  // Page 7
-      'IMG_8200.jpeg',  // Page 8
-      'kaja.1.JPG',  // Page 9 (both yes)
-      'kaja.2.JPG'  // Outro
+      'IMG_1333.JPG', 'IMG_1352.JPG', 'IMG_1384.JPG', 'IMG_4447.JPG', 'IMG_4496.JPG',
+      'IMG_5870.JPG', 'IMG_7952.jpeg', 'IMG_7992.jpeg', 'IMG_8200.jpeg', 'kaja.1.JPG', 'kaja.2.JPG'
     ];
 
     function render() {
@@ -96,7 +54,7 @@
             </div>
           </div>
         `;
-      } else if (currentScreen === 10) {
+      } else if (currentScreen >= 10) {
         app.innerHTML = `
           <div class="screen active">
             <h1>Yay! 😍</h1>
@@ -131,8 +89,8 @@
       render();
     }
 
-    // Start the game
     render();
   </script>
 </body>
 </html>
+
