@@ -18,43 +18,27 @@
       overflow: hidden;
     }
     .screen {
-      max-width: 90vw;
-      max-height: 90vh;
+      max-width: 90vw; max-height: 90vh;
       padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      gap: 30px; opacity: 0; transition: opacity 0.5s ease;
     }
     .screen.active { opacity: 1; }
     h1 { font-size: clamp(2rem, 8vw, 4rem); margin-bottom: 20px; }
     p { font-size: clamp(1.2rem, 5vw, 1.8rem); line-height: 1.4; max-width: 600px; }
     img {
-      max-width: 80%;
-      max-height: 40vh;
+      max-width: 80%; max-height: 40vh;
       border-radius: 20px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       object-fit: cover;
     }
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
     button {
-      padding: 15px 30px;
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.2);
-      color: white;
+      padding: 15px 30px; font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-weight: bold; border: none; border-radius: 50px;
+      cursor: pointer; transition: all 0.3s ease;
+      background: rgba(255,255,255,0.2); color: white;
       backdrop-filter: blur(10px);
     }
     button:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
@@ -68,41 +52,31 @@
   <div id="app"></div>
   <script>
     const app = document.getElementById('app');
-    let currentScreen = 0; // 0=welcome, 1-9=game pages, 10=outro
-
+    let currentScreen = 0;
     const photos = [
-      'IMG_1333.JPG',  // Welcome
-      'IMG_1352.JPG',  // Page 1
-      'IMG_1384.JPG',  // Page 2
-      'IMG_4447.JPG',  // Page 3
-      'IMG_4496.JPG',  // Page 4
-      'IMG_5870.JPG',  // Page 5
-      'IMG_7952.jpeg',  // Page 6
-      'IMG_7992.jpeg',  // Page 7
-      'IMG_8200.jpeg',  // Page 8
-      'photo9.jpg',  // Page 9 (both yes)
-      'photo10.jpg'  // Outro
+      'photo0.jpg', 'photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg',
+      'photo5.jpg', 'photo6.jpg', 'photo7.jpg', 'photo8.jpg', 'photo9.jpg', 'photo10.jpg'
     ];
 
     function render() {
       if (currentScreen === 0) {
         app.innerHTML = `
           <div class="screen active">
-            <h1>Welcome, Kája! 💕</h1>
-            <p>A little game just for us... Ready for some fun memories?</p>
-            <img src="${photos[0]}" alt="Us">
+            <h1>Ahoj Kája! 💕</h1>
+            <p>Malá hra jen pro nás... Připravená na vzpomínky?</p>
+            <img src="${photos[0]}" alt="My">
             <div class="buttons">
-              <button onclick="nextScreen()">Next</button>
+              <button onclick="nextScreen()">Další</button>
             </div>
           </div>
         `;
       } else if (currentScreen === 10) {
         app.innerHTML = `
           <div class="screen active">
-            <h1>Yay! 😍</h1>
-            <p>Of course you'll be my Valentine! I love you so much. Let's celebrate together. 💖</p>
-            <img src="${photos[10]}" alt="Us forever">
-            <p style="font-size: 1rem; opacity: 0.8;">(Reload page to play again)</p>
+            <h1>Jupi! 😍</h1>
+            <p>Jasně že budeš moje Valentýnka! Miluju tě. Oslavime spolu. 💖</p>
+            <img src="${photos[10]}" alt="Navždy">
+            <p style="font-size:1rem;opacity:0.8;">(Obnov stránku pro restart)</p>
           </div>
         `;
       } else {
@@ -110,28 +84,19 @@
         const yesScaleClass = currentScreen > 0 ? 'big-yes' : '';
         app.innerHTML = `
           <div class="screen active">
-            <h1>Will you be my Valentine? 💝</h1>
-            <img src="${photos[currentScreen]}" alt="Us">
+            <h1>Chceš být moje Valentýnka? 💝</h1>
+            <img src="${photos[currentScreen]}" alt="My">
             <div class="buttons">
-              <button class="yes ${yesScaleClass}" onclick="goToOutro()">Yes ❤️</button>
-              ${!isFinalGamePage ? `<button class="no" onclick="nextScreen()">No 😢</button>` : ''}
+              <button class="yes ${yesScaleClass}" onclick="goToOutro()">Ano ❤️</button>
+              ${!isFinalGamePage ? '<button class="no" onclick="nextScreen()">Ne 😢</button>' : ''}
             </div>
           </div>
         `;
       }
     }
 
-    function nextScreen() {
-      currentScreen++;
-      render();
-    }
-
-    function goToOutro() {
-      currentScreen = 10;
-      render();
-    }
-
-    // Start the game
+    function nextScreen() { currentScreen++; render(); }
+    function goToOutro() { currentScreen = 10; render(); }
     render();
   </script>
 </body>
