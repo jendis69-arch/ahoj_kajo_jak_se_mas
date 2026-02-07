@@ -80,8 +80,8 @@
       'IMG_7952.jpeg',  // Page 6
       'IMG_7992.jpeg',  // Page 7
       'IMG_8200.jpg',  // Page 8
-      '.jpg',  // Page 9 (both yes)
-      'photo10.jpg'  // Outro
+      'kaja.1.JPG',  // Page 9 (both yes)
+      'kaja.2.JPG'  // Outro
     ];
 
     function render() {
